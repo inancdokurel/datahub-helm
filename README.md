@@ -46,7 +46,7 @@ have the value `elasticsearch` instead of `neo4j`.
 Assuming kubectl context points to the correct kubernetes cluster, first create kubernetes secrets that contain MySQL and Neo4j passwords. 
 
 ```(shell)
-kubectl create secret generic mysql-secrets --from-literal=mysql-root-password=datahub
+kubectl create secret generic postgresql-secrets --from-literal=postgres-password=datahub
 kubectl create secret generic neo4j-secrets --from-literal=neo4j-password=datahub
 ```
 
