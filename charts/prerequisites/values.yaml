@@ -51,13 +51,13 @@ neo4j-community:
   existingPasswordSecret: neo4j-secrets
 
 mysql:
-  enabled: true
+  enabled: false
   auth:
     # For better security, add mysql-secrets k8s secret with mysql-root-password, mysql-replication-password and mysql-password
     existingSecret: mysql-secrets
 
 postgresql:
-  enabled: false
+  enabled: true
   auth:
     # For better security, add postgresql-secrets k8s secret with postgres-password, replication-password and password
     existingSecret: postgresql-secrets

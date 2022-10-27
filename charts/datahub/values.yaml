@@ -66,7 +66,7 @@ kafkaSetupJob:
   podAnnotations: {}
 
 mysqlSetupJob:
-  enabled: true
+  enabled: false
   image:
     repository: acryldata/datahub-mysql-setup
     tag: "v0.9.0"
@@ -77,7 +77,7 @@ mysqlSetupJob:
   podAnnotations: {}
 
 postgresqlSetupJob:
-  enabled: false
+  enabled: true
   image:
     repository: acryldata/datahub-postgres-setup
     tag: "v0.9.0"
@@ -147,27 +147,26 @@ global:
 
   sql:
     datasource:
-      host: "prerequisites-mysql:3306"
-      hostForMysqlClient: "prerequisites-mysql"
-      port: "3306"
-      url: "jdbc:mysql://prerequisites-mysql:3306/datahub?verifyServerCertificate=false&useSSL=true&useUnicode=yes&characterEncoding=UTF-8&enabledTLSProtocols=TLSv1.2"
-      driver: "com.mysql.cj.jdbc.Driver"
-      username: "root"
-      password:
-        secretRef: mysql-secrets
-        secretKey: mysql-root-password
+      # host: "prerequisites-mysql:3306"
+      # hostForMysqlClient: "prerequisites-mysql"
+      # port: "3306"
+      # url: "jdbc:mysql://prerequisites-mysql:3306/datahub?verifyServerCertificate=false&useSSL=true&useUnicode=yes&characterEncoding=UTF-8&enabledTLSProtocols=TLSv1.2"
+      # driver: "com.mysql.cj.jdbc.Driver"
+      # username: "root"
+      # password:
+      #  secretRef: mysql-secrets
+      #  secretKey: mysql-root-password
 
       ## Use below for usage of PostgreSQL instead of MySQL
-      # host: "prerequisites-postgresql:5432"
-      # hostForpostgresqlClient: "prerequisites-postgresql"
-      # port: "5432"
-      # url: "jdbc:postgresql://prerequisites-postgresql:5432/datahub"
-      # driver: "org.postgresql.Driver"
-      # username: "postgres"
-      # password:
-      #   secretRef: postgresql-secrets
-      #   secretKey: postgres-password
-
+        host: "prerequisites-postgresql:5432"
+        hostForpostgresqlClient: "prerequisites-postgresql"
+        port: "5432"
+        url: "jdbc:postgresql://prerequisites-postgresql:5432/datahub"
+        driver: "org.postgresql.Driver"
+        username: "postgres"
+        password:
+          secretRef: postgresql-secrets
+          secretKey: postgres-password
   datahub:
     gms:
       port: "8080"
